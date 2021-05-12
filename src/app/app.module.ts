@@ -11,11 +11,16 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { FormsModule } from '@angular/forms'
 import { MatTree } from '@angular/material/tree'
 import { MatExpansionModule } from '@angular/material/expansion'
+import { MatCardModule} from '@angular/material/card';
 
-import {DemoMaterialModule} from './material-module';
+import { DemoMaterialModule } from './material-module';
 import { ButtongroupComponent } from './buttongroup/buttongroup.component';
 import { TestComponentComponent } from './test-component/test-component.component';
 import { ContentComponentComponent } from './content-component/content-component.component';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import {LearnSegmentService} from './learnSegments/learn-segment.service'
 
 @NgModule({
   declarations: [
@@ -37,10 +42,12 @@ import { ContentComponentComponent } from './content-component/content-component
     MatSidenavModule,
     MatTree,
     MatExpansionModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCardModule,
+    FlexLayoutModule
   ],
 
-  providers: [],
+  providers: [LearnSegmentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
