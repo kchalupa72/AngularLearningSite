@@ -10,10 +10,9 @@ import { LearnSegmentService} from '../learnSegments/learn-segment.service';
 
 export class ContentComponentComponent implements OnInit {
   public LearningSegments: LearnSegmentModel[] = this.learnSegmentService.getLearningSegments();
-  concreteLearningSegments: LearnSegmentModel[] = [
-    new LearnSegmentModel("Linq"),
-    new LearnSegmentModel("Generics"),
-  ]
+
+  panelOpenState: boolean = false;
+
   constructor(private learnSegmentService: LearnSegmentService) {
 
   }

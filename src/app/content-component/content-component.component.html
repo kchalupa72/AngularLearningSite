@@ -1,16 +1,13 @@
-<p>content-component works!</p>
 <div class="content">
-  <div fxLayout="row wrap" fxLayoutGap="16px grid">
-    <div fxFlex="25%" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let learnSegment of LearningSegments">
-      <mat-card class="mat-elevation-z4" >
+  <!-- <div fxLayout="row wrap" fxLayoutGap="16px grid">
+    <div fxFlex="25%" *ngFor="let learnSegment of LearningSegments">
+      <mat-card class="mat-elevation-z4">
         <mat-card-header>
-          <mat-card-title>{{learnSegment.segmentTitle}}</mat-card-title>
+          <mat-card-title>{{ learnSegment.segmentTitle }}</mat-card-title>
         </mat-card-header>
-        <img mat-card-image src="../../assets/images/CSharp_Icon.png">
+        <img mat-card-image src="../../assets/images/CSharp_Icon.png" />
         <mat-card-content>
-          <p>
-            This is a C# Learning Segment
-          </p>
+          <p>This is a C# Learning Segment</p>
         </mat-card-content>
         <mat-card-actions>
           <button mat-button>LIKE</button>
@@ -18,12 +15,37 @@
         </mat-card-actions>
       </mat-card>
     </div>
-  </div>
+  </div> -->
 
-  <!-- <mat-list>
-    <mat-list-item *ngFor="let learnSegment of LearningSegments"> {{learnSegment.segmentTitle}} </mat-list-item>
-    <mat-list-item> Salt </mat-list-item>
-    <mat-list-item> Paprika </mat-list-item>
-   </mat-list> -->
+  <mat-accordion>
+    <div *ngFor="let learnSegment of LearningSegments">
+      <mat-expansion-panel
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false"
+      >
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{ learnSegment.segmentTitle }}</mat-panel-title>
+          <mat-panel-description>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-  </div>
+        <img mat-card-image src="../../assets/images/CSharp_Icon.png" />
+        <mat-list>
+          <div mat-subheader>Instructions</div>
+          <mat-list-item>
+            <mat-icon mat-list-icon>description</mat-icon>
+            <div mat-line>Instructions:</div>
+            <div class="instruction-set" mat-line *ngFor="let instr of learnSegment.instructions"> -{{instr}}</div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <div mat-subheader>Links:</div>
+          <mat-list-item>
+            <mat-icon mat-list-icon>link</mat-icon>
+            <div mat-line>-Example Repo: <a href="{{learnSegment.repoLink}}" target="_blank"> Repo Link </a></div>
+            <div mat-line>-Documentation: <a href="{{learnSegment.docLink}}" target="_blank"> Documentation Link </a></div>
+          </mat-list-item>
+        </mat-list>
+      </mat-expansion-panel>
+    </div>
+  </mat-accordion>
+</div>
